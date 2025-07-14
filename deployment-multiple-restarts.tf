@@ -32,7 +32,7 @@ module "deployment_multiple_restarts" {
   service              = var.service
   service_display_name = var.service_display_name
   additional_tags      = var.additional_tags
-  locked               = var.locked
+  locked               = null
   name_prefix          = var.name_prefix
   name_suffix          = var.name_suffix
 }
