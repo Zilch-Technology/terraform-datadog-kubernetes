@@ -6,11 +6,12 @@ locals {
 }
 
 module "node_ready" {
-  source  = "kabisa/generic-monitor/datadog"
-  version = "1.0.0"
+  # source  = "kabisa/generic-monitor/datadog"
+  # version = "1.0.0"
+  source = "github.com/Zilch-Technology/terraform-datadog-generic-monitor"
 
   name             = "Node Not Ready"
-  query            = "avg(${var.node_ready_evaluation_period}):default_zero(max:kubernetes_state.node.by_condition{${local.node_ready_filter} AND (NOT condition:ready) AND (status:true OR status:unknown)} by {kube_cluster_name,host}) > ${var.node_ready_critical}"
+  query            = "avg(${var.node_ready_evaluation_period}):default_zero(max:kubernetes_state.node.by_condition{${local.node_ready_filter} AND (NOT condition:ready) AND (status:true OR status:unknown)} by {kube_cluster_name,host,kube_node}) > ${var.node_ready_critical}"
   alert_message    = "Kubernetes cluster node {{host}} is not ready."
   recovery_message = "Kubernetes cluster node {{host}} is ready again."
 

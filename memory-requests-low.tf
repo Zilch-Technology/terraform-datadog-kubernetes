@@ -6,8 +6,9 @@ locals {
 }
 
 module "memory_requests_low" {
-  source  = "kabisa/generic-monitor/datadog"
-  version = "1.0.0"
+  # source  = "kabisa/generic-monitor/datadog"
+  # version = "1.0.0"
+  source = "github.com/Zilch-Technology/terraform-datadog-generic-monitor"
 
   name             = "Available Memory for Requests Low"
   query            = "avg(${var.memory_requests_low_evaluation_period}):max:system.mem.total{${local.memory_requests_low_filter}} by {host,kube_cluster_name} - max:kubernetes.memory.requests{${local.memory_requests_low_filter}} by {host,kube_cluster_name} < ${var.memory_requests_low_critical}"

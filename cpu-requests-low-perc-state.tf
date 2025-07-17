@@ -6,8 +6,9 @@ locals {
 }
 
 module "cpu_requests_low_perc_state" {
-  source  = "kabisa/generic-monitor/datadog"
-  version = "1.0.0"
+  # source  = "kabisa/generic-monitor/datadog"
+  # version = "1.0.0"
+  source = "github.com/Zilch-Technology/terraform-datadog-generic-monitor"
 
   name             = "Available CPU for requests in percentages Low"
   query            = "max(${var.cpu_requests_low_perc_state_evaluation_period}):( sum:kubernetes_state.container.cpu_requested{${local.cpu_requests_low_perc_state_filter}} by {host,kube_cluster_name} / sum:kubernetes_state.node.cpu_capacity{${local.cpu_requests_low_perc_state_filter}} by {host,kube_cluster_name} ) * 100 > ${var.cpu_requests_low_perc_state_critical}"

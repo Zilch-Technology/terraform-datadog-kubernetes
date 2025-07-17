@@ -6,8 +6,9 @@ locals {
 }
 
 module "node_status" {
-  source  = "kabisa/generic-monitor/datadog"
-  version = "1.0.0"
+  # source  = "kabisa/generic-monitor/datadog"
+  # version = "1.0.0"
+  source = "github.com/Zilch-Technology/terraform-datadog-generic-monitor"
 
   name                = "Node Status not OK"
   query               = "avg(${var.node_status_evaluation_period}):avg:kubernetes_state.node.status{${local.node_status_filter}} by {kube_cluster_name,node} < 1"

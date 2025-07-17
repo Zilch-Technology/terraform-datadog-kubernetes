@@ -8,7 +8,7 @@ locals {
 module "jobs_failed" {
   # source  = "kabisa/generic-monitor/datadog"
   # version = "1.0.0"
-  source = "/Users/philip.stevenson/code/github/Zilch-Technology/terraform-datadog-generic-monitor"
+  source = "github.com/Zilch-Technology/terraform-datadog-generic-monitor"
 
   name  = "jobs failed"
   query = "min(${var.jobs_failed_evaluation_period}):sum:kubernetes_state.job.failed{${local.jobs_failed_filter}} by {kube_cronjob,kube_cluster_name,kube_namespace,kube_job} > ${var.jobs_failed_critical}"

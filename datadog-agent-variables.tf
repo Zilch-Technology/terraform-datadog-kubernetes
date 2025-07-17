@@ -34,8 +34,9 @@ variable "datadog_agent_no_data_timeframe" {
 }
 
 variable "datadog_agent_notify_no_data" {
-  type    = bool
-  default = false
+  description = "Whether to notify when there is no data for this monitor."
+  type        = bool
+  default     = true
 }
 
 variable "datadog_agent_ok_threshold" {

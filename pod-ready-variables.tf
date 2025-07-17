@@ -49,3 +49,9 @@ variable "pod_ready_priority" {
   type    = number
   default = 3
 }
+
+variable "pod_ready_evaluation_delay" {
+  description = "(Number) Time (in seconds) to delay evaluation"
+  type        = number
+  default     = 60
+}
