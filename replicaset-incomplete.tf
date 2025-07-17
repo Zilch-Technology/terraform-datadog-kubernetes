@@ -23,6 +23,8 @@ module "replicaset_incomplete" {
   docs     = var.replicaset_incomplete_docs
   note     = var.replicaset_incomplete_note
 
+  new_group_delay = var.replicaset_incomplete_new_group_delay
+
   # module level vars
   env                  = var.env
   service              = var.service

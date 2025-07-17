@@ -55,3 +55,9 @@ variable "replicaset_incomplete_priority" {
   type    = number
   default = 3
 }
+
+variable "replicaset_incomplete_new_group_delay" {
+  description = "Time in seconds to wait before creating a new group for this monitor. This is useful when the monitor is expected to be triggered multiple times in a short period."
+  type        = number
+  default     = null
+}
