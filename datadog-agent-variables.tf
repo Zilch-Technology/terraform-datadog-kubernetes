@@ -5,7 +5,7 @@ variable "datadog_agent_enabled" {
 
 variable "datadog_agent_evaluation_period" {
   type    = string
-  default = "last_15m"
+  default = "last_5m"
 }
 
 variable "datadog_agent_note" {
@@ -36,7 +36,7 @@ variable "datadog_agent_no_data_timeframe" {
 variable "datadog_agent_notify_no_data" {
   description = "Whether to notify when there is no data for this monitor."
   type        = bool
-  default     = true
+  default     = false
 }
 
 variable "datadog_agent_ok_threshold" {
