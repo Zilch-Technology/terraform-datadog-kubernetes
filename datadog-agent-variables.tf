@@ -5,7 +5,7 @@ variable "datadog_agent_enabled" {
 
 variable "datadog_agent_evaluation_period" {
   type    = string
-  default = "last_5m"
+  default = "last_15m"
 }
 
 variable "datadog_agent_note" {
