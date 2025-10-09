@@ -61,3 +61,9 @@ variable "replicaset_incomplete_new_group_delay" {
   type        = number
   default     = null
 }
+
+variable "replicaset_incomplete_evaluation_delay" {
+  description = "Time in seconds to wait before evaluating the monitor. This is useful when the metric is delayed."
+  type        = number
+  default     = null
+}
