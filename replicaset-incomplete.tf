@@ -26,6 +26,8 @@ module "replicaset_incomplete" {
 
   new_group_delay = var.replicaset_incomplete_new_group_delay
 
+  evaluation_delay = var.replicaset_incomplete_evaluation_delay
+
   # module level vars
   env                  = var.env
   service              = var.service
