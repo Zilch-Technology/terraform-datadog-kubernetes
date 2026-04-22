@@ -13,7 +13,7 @@ module "cpu_on_dns_pods_high" {
   source = "github.com/Zilch-Technology/terraform-datadog-generic-monitor"
 
   name             = "CPU Usage on DNS pods is high"
-  query            = "avg(${var.cpu_on_dns_pods_high_evaluation_period}):avg:docker.cpu.usage{${local.cpu_on_dns_pods_high_filter}} by {kube_cluster_name,host,container_name} > ${var.cpu_on_dns_pods_high_critical}"
+  query            = "avg(${var.cpu_on_dns_pods_high_evaluation_period}):100 * avg:kubernetes.cpu.usage.total{${local.cpu_on_dns_pods_high_filter}} by {kube_cluster_name,pod_name,kube_container_name} / (avg:kubernetes_state.container.cpu_limit{${local.cpu_on_dns_pods_high_filter}} by {kube_cluster_name,pod_name,kube_container_name} * 1e9) > ${var.cpu_on_dns_pods_high_critical}"
   alert_message    = "Kubernetes CPU usage on DNS pods is too high"
   recovery_message = "Kubernetes CPU usage on DNS pods has recovered"
 
