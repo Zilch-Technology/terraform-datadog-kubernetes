@@ -11,7 +11,7 @@ module "cpu_requests_low_perc" {
   source = "github.com/Zilch-Technology/terraform-datadog-generic-monitor"
 
   name             = "Available CPU for requests in percentages Low"
-  query            = "max(${var.cpu_requests_low_perc_evaluation_period}):100 * sum:kubernetes.cpu.requests{${local.cpu_requests_low_perc_filter}} by {kube_cluster_name,host} / max:system.cpu.num_cores{${local.cpu_requests_low_perc_filter}} by {kube_cluster_name,host} > ${var.cpu_requests_low_perc_critical}"
+  query            = "max(${var.cpu_requests_low_perc_evaluation_period}):100 * sum:kubernetes.cpu.requests{${local.cpu_requests_low_perc_filter}} by {kube_cluster_name,host} / sum:kubernetes_state.node.cpu_capacity{${local.cpu_requests_low_perc_filter}} by {kube_cluster_name,host} > ${var.cpu_requests_low_perc_critical}"
   alert_message    = "Kubernetes cluster cpu room for requests / percentage is too low"
   recovery_message = "Kubernetes cluster cpu requests / percentage has recovered"
 
