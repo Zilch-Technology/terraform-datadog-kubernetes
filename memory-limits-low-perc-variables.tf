@@ -15,7 +15,7 @@ variable "memory_limits_low_perc_critical" {
 
 variable "memory_limits_low_perc_evaluation_period" {
   type    = string
-  default = "last_5m"
+  default = "last_30m"
 }
 
 variable "memory_limits_low_perc_note" {

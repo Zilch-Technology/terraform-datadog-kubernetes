@@ -15,7 +15,7 @@ variable "cpu_limits_low_perc_critical" {
 
 variable "cpu_limits_low_perc_evaluation_period" {
   type    = string
-  default = "last_5m"
+  default = "last_30m"
 }
 
 variable "cpu_limits_low_perc_note" {

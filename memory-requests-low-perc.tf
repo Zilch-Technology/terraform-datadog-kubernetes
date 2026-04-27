@@ -11,7 +11,7 @@ module "memory_requests_low_perc" {
   source = "github.com/Zilch-Technology/terraform-datadog-generic-monitor"
 
   name             = "Available Memory for Requests in percentage Low"
-  query            = "max(${var.memory_requests_low_perc_evaluation_period}):(sum:kubernetes.memory.requests{${local.memory_requests_low_perc_filter}} by {host,kube_cluster_name} / sum:kubernetes_state.node.memory_allocatable{${local.memory_requests_low_perc_filter}} by {host,kube_cluster_name}) * 100 > ${var.memory_requests_low_perc_critical}"
+  query            = "avg(${var.memory_requests_low_perc_evaluation_period}):(sum:kubernetes.memory.requests{${local.memory_requests_low_perc_filter}} by {host,kube_cluster_name} / sum:kubernetes_state.node.memory_allocatable{${local.memory_requests_low_perc_filter}} by {host,kube_cluster_name}) * 100 > ${var.memory_requests_low_perc_critical}"
   alert_message    = "Kubernetes cluster memory room for Requests in percentage is too low"
   recovery_message = "Kubernetes cluster memory Requests in percentage has recovered"
 
