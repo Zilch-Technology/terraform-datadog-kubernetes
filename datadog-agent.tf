@@ -22,9 +22,11 @@ module "datadog_agent" {
   alerting_enabled   = var.datadog_agent_alerting_enabled
   critical_threshold = 1
   # no warning threshold for this monitor
-  priority = min(var.datadog_agent_priority + var.priority_offset, 5)
-  docs     = var.datadog_agent_docs
-  note     = var.datadog_agent_note
+  priority          = min(var.datadog_agent_priority + var.priority_offset, 5)
+  docs              = var.datadog_agent_docs
+  note              = var.datadog_agent_note
+  evaluation_delay  = var.datadog_agent_evaluation_delay
+  auto_resolve_time_h = var.datadog_agent_auto_resolve_time_h
 
   # module level vars
   env                  = var.env
@@ -36,3 +38,4 @@ module "datadog_agent" {
   name_prefix          = var.name_prefix
   name_suffix          = var.name_suffix
 }
+
