@@ -50,3 +50,16 @@ variable "datadog_agent_priority" {
   type    = number
   default = 2
 }
+
+variable "datadog_agent_evaluation_delay" {
+  description = "Time (in seconds) to delay evaluation, as a non-negative integer."
+  type        = number
+  default     = null
+}
+
+variable "datadog_agent_auto_resolve_time_h" {
+  description = "Time in hours after which a triggered monitor with no data is automatically resolved."
+  type        = number
+  default     = null
+}
+
